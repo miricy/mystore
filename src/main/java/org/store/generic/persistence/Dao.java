@@ -6,16 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityManager;
-import org.hibernate.SessionFactory;
-import org.hibernate.Session;
+import javax.persistence.Query;
 
 public class Dao<E extends Model> {
 
 	@Autowired
 	private EntityManagerFactory factory;
-
-	@Autowired
-	private SessionFactory sessionFactory;
 
 	protected Class<? extends Model> clazz;
 
@@ -25,14 +21,6 @@ public class Dao<E extends Model> {
 
 	public EntityManager getEntityManager() {
 		return factory.createEntityManager();
-	}
-
-	public Session getSessionFactory() {
-		try {
-			return sessionFactory.getCurrentSession();
-		} catch (Exception e) {
-			return sessionFactory.openSession();
-		}
 	}
 
 	@Transactional
@@ -52,16 +40,23 @@ public class Dao<E extends Model> {
 
 	@Transactional
 	public List<?> findAll() {
-		return getSessionFactory().createCriteria(clazz).list();
+		String queryString = "SELECT a FROM "+clazz.getSimpleName()+" a";
+		return getEntityManager().createQuery(queryString).getResultList();
 	}
 
 	@Transactional
 	public E findById(int id) {
-		return (E) getSessionFactory().get(clazz, id);
+		String queryString = "SELECT a FROM "+clazz.getSimplename()+" a WHERE a.id = :id";
+		Query query = getEntityManager().createQuery(queryString);
+		query.setParameter("id", String.valueOf(id));
+		return query.getSingleResult();
 	}
 
 	@Transactional
 	public E findByField(String field, String value) {
-		return (E) getSessionFactory().createQuery("from "+clazz.getSimpleName()+" where "+field+" = :data").setParameter("data", value).uniqueResult();
+		String queryString = "SELECT a FROM "+clazz.getSimplename()+" a WHERE a."+field+" = :value";
+		Query query = getEntityManager().createQuery(queryString);
+		query.setParameter("value", value);
+		return query.getSingleResult();
 	}
 }
