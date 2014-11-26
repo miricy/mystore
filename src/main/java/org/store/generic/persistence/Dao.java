@@ -28,27 +28,27 @@ public class Dao<E extends Model> {
 
 	@Transactional
 	public void insert(E object) {
-		sessionFactory.getCurrentSession().persist(object);
+		getSessionFactory().persist(object);
 	}
 
 	@Transactional
 	public void update(E object) {
-		sessionFactory.getCurrentSession().merge(object);
+		getSessionFactory().merge(object);
 	}
 
 	@Transactional
 	public void delete(E object) {
-		sessionFactory.getCurrentSession().delete(object);
+		getSessionFactory().delete(object);
 	}
 
 	@Transactional
 	public List<?> findAll() {
-		return sessionFactory.getCurrentSession().createCriteria(clazz).list();
+		return getSessionFactory().createCriteria(clazz).list();
 	}
 
 	@Transactional
 	public E findById(int id) {
-		return (E) sessionFactory.getCurrentSession().get(clazz, id);
+		return (E) getSessionFactory().get(clazz, id);
 	}
 
 	@Transactional
