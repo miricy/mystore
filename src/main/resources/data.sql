@@ -1,9 +1,9 @@
 
 insert into Role (nome) values ('usuario');
 
-insert into Permission (nome) values ('cadastrar_Usuario');
-insert into Permission (nome) values ('alterar_Usuario');
-insert into Permission (nome) values ('remover_Usuario');
+insert into Permission (nome) values ('cadastra_Usuario');
+insert into Permission (nome) values ('altera_Usuario');
+insert into Permission (nome) values ('remove_Usuario');
 insert into Permission (nome) values ('listagem_Usuario');
 
 insert into role_permissions values (1, 1);
@@ -13,9 +13,9 @@ insert into role_permissions values (1, 4);
 
 insert into Role (nome) values ('role');
 
-insert into Permission (nome) values ('cadastrar_Role');
-insert into Permission (nome) values ('alterar_Role');
-insert into Permission (nome) values ('remover_Role');
+insert into Permission (nome) values ('cadastra_Role');
+insert into Permission (nome) values ('altera_Role');
+insert into Permission (nome) values ('remove_Role');
 insert into Permission (nome) values ('listagem_Role');
 
 insert into role_permissions values (2, 5);
@@ -25,9 +25,9 @@ insert into role_permissions values (2, 8);
 
 insert into Role (nome) values ('permission');
 
-insert into Permission (nome) values ('cadastrar_Permission');
-insert into Permission (nome) values ('alterar_Permission');
-insert into Permission (nome) values ('remover_Permission');
+insert into Permission (nome) values ('cadastra_Permission');
+insert into Permission (nome) values ('altera_Permission');
+insert into Permission (nome) values ('remove_Permission');
 insert into Permission (nome) values ('listagem_Permission');
 
 insert into role_permissions values (3, 9);
