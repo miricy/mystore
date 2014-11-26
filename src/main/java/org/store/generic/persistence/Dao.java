@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class Dao<E extends Model> {
+public class Dao<E> {
 
 	@Autowired
 	private EntityManagerFactory factory;
