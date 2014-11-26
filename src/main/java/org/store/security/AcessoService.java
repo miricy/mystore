@@ -29,10 +29,14 @@ public class AcessoService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario account = (Usuario) usuario.findByField("login", username);
 
-    if(account==null)
+    if(account==null) {
+			System.out.println("No such user: " + username);
     	throw new UsernameNotFoundException("No such user: " + username);
-    else if (account.getRole().isEmpty())
+		}
+    else if (account.getRole().isEmpty()) {
+			System.out.println("User " + username + " has no authorities");
     	throw new UsernameNotFoundException("User " + username + " has no authorities");
+		}
 
     List<Permission> lista = new ArrayList<Permission>();
     int max = account.getRole().size();

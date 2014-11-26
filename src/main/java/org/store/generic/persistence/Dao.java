@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.hibernate.SessionFactory;
+import org.hibernate.Session;
 
 public class Dao<E extends Model> {
 
@@ -15,6 +16,14 @@ public class Dao<E extends Model> {
 
 	public Dao(Class<? extends Model> clazz) {
 		this.clazz = clazz;
+	}
+
+	public Session getSessionFactory() {
+		try {
+			return sessionFactory.getCurrentSession();
+		} catch (Exception e) {
+			return sessionFactory.openSession();
+		}
 	}
 
 	@Transactional
@@ -44,6 +53,6 @@ public class Dao<E extends Model> {
 
 	@Transactional
 	public E findByField(String field, String value) {
-		return (E) sessionFactory.getCurrentSession().createQuery("from "+clazz.getSimpleName()+" where "+field+" = :data").setParameter("data", value).uniqueResult();
+		return (E) getSessionFactory().createQuery("from "+clazz.getSimpleName()+" where "+field+" = :data").setParameter("data", value).uniqueResult();
 	}
 }
