@@ -4,10 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManager;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 
 public class Dao<E extends Model> {
+
+	@Autowired
+	private EntityManagerFactory factory;
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -16,6 +21,10 @@ public class Dao<E extends Model> {
 
 	public Dao(Class<? extends Model> clazz) {
 		this.clazz = clazz;
+	}
+
+	public EntityManager getEntityManager() {
+		return factory.createEntityManager();
 	}
 
 	public Session getSessionFactory() {
@@ -28,17 +37,17 @@ public class Dao<E extends Model> {
 
 	@Transactional
 	public void insert(E object) {
-		getSessionFactory().persist(object);
+		getEntityManager().persist(object);
 	}
 
 	@Transactional
 	public void update(E object) {
-		getSessionFactory().merge(object);
+		getEntityManager().merge(object);
 	}
 
 	@Transactional
 	public void delete(E object) {
-		getSessionFactory().delete(object);
+		getEntityManager().remove(object);
 	}
 
 	@Transactional
