@@ -46,17 +46,17 @@ public class Dao<E extends Model> {
 
 	@Transactional
 	public E findById(int id) {
-		String queryString = "SELECT a FROM "+clazz.getSimplename()+" a WHERE a.id = :id";
+		String queryString = "SELECT a FROM "+clazz.getSimpleName()+" a WHERE a.id = :id";
 		Query query = getEntityManager().createQuery(queryString);
 		query.setParameter("id", String.valueOf(id));
-		return query.getSingleResult();
+		return (E) query.getSingleResult();
 	}
 
 	@Transactional
 	public E findByField(String field, String value) {
-		String queryString = "SELECT a FROM "+clazz.getSimplename()+" a WHERE a."+field+" = :value";
+		String queryString = "SELECT a FROM "+clazz.getSimpleName()+" a WHERE a."+field+" = :value";
 		Query query = getEntityManager().createQuery(queryString);
 		query.setParameter("value", value);
-		return query.getSingleResult();
+		return (E) query.getSingleResult();
 	}
 }
