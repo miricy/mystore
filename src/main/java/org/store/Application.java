@@ -58,4 +58,18 @@ public class Application {
   public String signup2(@ModelAttribute("object") Usuario object, BindingResult result) {
     return "acesso/signin";
   }
+
+  @RequestMapping(value = "/settings")
+  public String settings(Model model) {
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    model.addAttribute("usuario", auth.getPrincipal());
+    return "private/settings";
+  }
+
+  @RequestMapping(value = "/profile")
+  public String profile(Model model) {
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    model.addAttribute("usuario", auth.getPrincipal());
+    return "private/profile";
+  }
 }
