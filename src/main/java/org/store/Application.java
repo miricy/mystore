@@ -30,7 +30,7 @@ public class Application {
   public String index(Model model) throws Exception {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     model.addAttribute("menu", Menu.index());
-    model.addAttribute("usuario", auth.getPrincipal());
+    model.addAttribute("usuario", auth.getName());
     return "public/index";
   }
 
@@ -40,7 +40,7 @@ public class Application {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     model.addAttribute("menu", Menu.admin());
     model.addAttribute("settings", Menu.settings());
-    model.addAttribute("usuario", auth.getPrincipal());
+    model.addAttribute("usuario", auth.getName());
     return "private/home";
   }
 
@@ -62,14 +62,14 @@ public class Application {
   @RequestMapping(value = "/settings")
   public String settings(Model model) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    model.addAttribute("usuario", auth.getPrincipal());
+    model.addAttribute("usuario", auth.getName());
     return "private/settings";
   }
 
   @RequestMapping(value = "/profile")
   public String profile(Model model) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    model.addAttribute("usuario", auth.getPrincipal());
+    model.addAttribute("usuario", auth.getName());
     return "private/profile";
   }
 }

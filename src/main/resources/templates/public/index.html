@@ -22,7 +22,12 @@
             <li class="active"><a href="#">Home</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="@{/home}">${usuario}</a></li>
+            <div sec:authorize="isAuthenticated()">
+              <li><a th:href="@{/home}"><span th:text="${usuario}"></span></a></li>
+            </div>
+            <div sec:authorize="isAnonymous()">
+              <li><a th:href="@{/signin}">Entrar</a></li>
+            </div>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
