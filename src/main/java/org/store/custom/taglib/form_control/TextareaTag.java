@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import com.spring.config.annotation.form_control.Checkbox;
-import com.spring.config.taglib.form.FormTag;
+import org.store.custom.annotation.form_control.Textarea;
+import org.store.custom.taglib.form.FormTag;
 
 public class TextareaTag extends TagSupport {
   private static final long serialVersionUID = 1L;
@@ -49,7 +49,7 @@ public class TextareaTag extends TagSupport {
   }
 
   public String label() {
-    return field().getAnnotation(Checkbox.class).label();
+    return field().getAnnotation(Textarea.class).label();
   }
 
   public String name() {

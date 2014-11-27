@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import com.spring.config.annotation.form_control.Checkbox;
-import com.spring.config.taglib.form.FormTag;
+import org.store.custom.annotation.form_control.Radiobutton;
+import org.store.custom.taglib.form.FormTag;
 
 public class RadiobuttonTag extends TagSupport {
   private static final long serialVersionUID = 1L;
@@ -48,7 +48,7 @@ public class RadiobuttonTag extends TagSupport {
   }
 
   public String label() {
-    return field().getAnnotation(Checkbox.class).label();
+    return field().getAnnotation(Radiobutton.class).label();
   }
 
   public String name() {
