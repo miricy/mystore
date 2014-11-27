@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>Store - Signup</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link th:href="@{/signin.css}" rel="stylesheet"/>
+</head>
+<body>
+  <div class="container">
+    <form class="form" role="form" method="post" th:action="@{/send_data}">
+      <field-box>
+        <label>Login:</label>
+        <input type="text" name="login" class="form-control" required="required" autofocus="autofocus"/>
+      </field-box>
+      <field-box>
+        <label>Senha:</label>
+        <input type="password" name="senha" class="form-control" required="required"/>
+      </field-box>
+      <field-box>
+        <label>Nome:</label>
+        <input type="text" name="nome" class="form-control" required="required"/>
+      </field-box>
+      <field-box>
+        <label>Sobrenome:</label>
+        <input type="text" name="sobrenome" class="form-control" required="required"/>
+      </field-box>
+      <field-box>
+        <label>E-mail:</label>
+        <input type="email" name="email" class="form-control" required="required"/>
+      </field-box>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastre-se</button>
+    </form>
+  </div>
+</body>
+</html>

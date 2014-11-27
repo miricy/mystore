@@ -51,7 +51,7 @@ public class AcessoService implements UserDetailsService {
     boolean credentialsNonExpired = true;
     boolean accountNonLocked = true;
 
-    return new User(account.getLogin(), account.getSenha(), accountIsEnabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(lista));
+    return new User(account.getNome()+" "+account.getSobrenome(), account.getSenha(), accountIsEnabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(lista));
 	}
 
 	public List<String> getRolesAsList(List<Permission> list) {
