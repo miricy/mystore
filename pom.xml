@@ -51,7 +51,7 @@
       <artifactId>sdk</artifactId>
       <version>2.3.0</version>
       <scope>system</scope>
-      <systemPath>${user.home}/workspace/java-2.3.0/pagseguro-api-2.3.0.jar</systemPath>
+      <systemPath>${user.home}\Downloads\workspace\java-2.3.0\pagseguro-api-2.3.0.jar</systemPath>
     </dependency>
   </dependencies>
 
@@ -72,7 +72,7 @@
         <configuration>
           <verbose>true</verbose>
           <fork>true</fork>
-          <executable>${user.home}/jdk1.7.0_55/bin/javac</executable>
+          <executable>${user.home}\Downloads\openjdk-1.7.0\bin\javac.exe</executable>
           <compilerVersion>1.7</compilerVersion>
         </configuration>
       </plugin>
