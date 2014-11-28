@@ -17,7 +17,7 @@ $(document).on("click", ".popup", function(event){
 
 $(document).on("click", ".link", function(event){
 	event.preventDefault();
-	var link = $(this).data("action");
+	var link = $(this).attr("href");
 	$.ajax({
 		type: 'GET',
 		url: link

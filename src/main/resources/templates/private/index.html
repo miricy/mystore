@@ -8,7 +8,7 @@
     <div class="panel-heading"><span th:text="${command}"></span></div>
 
     <div class="panel-body">
-      <button th:each="item : ${menu}" type="button" class="btn btn-default">${item}</button>
+      <button th:each="item : ${menu}" type="button" class="btn btn-default"><span th:text="${item}"/></button>
     </div>
 
     <table class="table">
@@ -31,9 +31,9 @@
   <div th:each="item : ${item}" class="cmd"><span th:text="${item}"/></div>
 
   <script src="js/page_load.js"></script>
-  <script>
+  <script th:inline="javascript">
     $(document).ready(function(){
-      var url = '@{/__${command}__/lista.json}';
+      var url = [[@{/__${command}__/lista.json}]];
       load_content(url);
     });
   </script>

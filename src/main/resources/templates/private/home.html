@@ -37,10 +37,10 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li th:each="item : ${menu}"><a th:href="@{/__${item.simpleName}__/index}"><span th:text="${item.simpleName}"></span></a></li>
+            <li th:each="item : ${menu}"><a class="link" th:href="@{/__${item.simpleName}__/index}"><span th:text="${item.simpleName}"></span></a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li th:each="item : ${settings}"><a th:href="@{/__${item.simpleName}__/index}"><span th:text="${item.simpleName}"></span></a></li>
+            <li th:each="item : ${settings}"><a class="link" th:href="@{/__${item.simpleName}__/index}"><span th:text="${item.simpleName}"></span></a></li>
           </ul>
         </div>
 
