@@ -28,7 +28,7 @@ public class basicController<E> {
 
   @RequestMapping(value = "cadastra")
   @PreAuthorize("hasPermission(#user, 'cadastra_'+#this.this.name)")
-  @Menu
+  @Menu(label = "cadastra")
   public String cadastra(Model model) throws Exception {
     model.addAttribute("command", serv.newObject());
     return "private/cadastra";
@@ -36,7 +36,7 @@ public class basicController<E> {
 
   @RequestMapping(value = "altera/{id}")
   @PreAuthorize("hasPermission(#user, 'altera_'+#this.this.name)")
-  @Item
+  @Item(label = "altera")
   public String altera(Model model, @PathVariable("id") String id) {
     int Id = Integer.valueOf(id).intValue();
     model.addAttribute("command", serv.getObject(Id));
@@ -45,7 +45,7 @@ public class basicController<E> {
 
   @RequestMapping(value = "remove/{id}")
   @PreAuthorize("hasPermission(#user, 'remove_'+#this.this.name)")
-  @Item
+  @Item(label = "remove")
   public String remove(Model model, @PathVariable("id") String id) {
     int Id = Integer.valueOf(id).intValue();
     model.addAttribute("command", serv.getObject(Id));

@@ -48,7 +48,7 @@ public class Usuario extends Model {
 	private String sobrenome;
 
 	@Order(value = 6)
-	@Input(label = "E-mail")
+	@Input(label = "E-mail", type="email")
 	private String email;
 
 	@ManyToMany

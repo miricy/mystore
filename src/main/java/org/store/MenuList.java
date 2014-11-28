@@ -58,7 +58,7 @@ public class MenuList {
     List<Field> lista = Arrays.asList(clazz.getDeclaredFields());
     for(int i=0; i<lista.size(); i++) {
       if(lista.get(i).isAnnotationPresent(Input.class))
-      ret.add(lista.get(i).getName());
+        ret.add(lista.get(i).getName());
     }
 
     return ret;
@@ -70,7 +70,7 @@ public class MenuList {
     List<Method> lista = Arrays.asList(controller.getMethods());
     for(int i=0; i<lista.size(); i++) {
       if( lista.get(i).isAnnotationPresent(Menu.class) )
-      ret.add(lista.get(i).getAnnotation(Menu.class).label());
+        ret.add(lista.get(i).getAnnotation(Menu.class).label());
     }
 
     return ret;
@@ -82,7 +82,7 @@ public class MenuList {
     List<Method> lista = Arrays.asList(controller.getMethods());
     for(int i=0; i<lista.size(); i++) {
       if( lista.get(i).isAnnotationPresent(Item.class) )
-      ret.add(lista.get(i).getAnnotation(Item.class).label());
+        ret.add(lista.get(i).getAnnotation(Item.class).label());
     }
 
     return ret;
