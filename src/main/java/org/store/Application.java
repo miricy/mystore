@@ -29,7 +29,7 @@ public class Application {
   @RequestMapping(value = "/")
   public String index(Model model) throws Exception {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    model.addAttribute("menu", Menu.index());
+    model.addAttribute("menu", MenuList.index());
     model.addAttribute("usuario", auth.getName());
     return "public/index";
   }
@@ -38,8 +38,8 @@ public class Application {
   @RequestMapping(value = "/home")
   public String home(Model model) throws Exception {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    model.addAttribute("menu", Menu.admin());
-    model.addAttribute("settings", Menu.settings());
+    model.addAttribute("menu", MenuList.admin());
+    model.addAttribute("settings", MenuList.settings());
     model.addAttribute("usuario", auth.getName());
     return "private/home";
   }

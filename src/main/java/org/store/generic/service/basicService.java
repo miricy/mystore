@@ -1,4 +1,4 @@
-package org.hello.generic.service;
+package org.store.generic.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +33,14 @@ public class basicService<E> {
   @PreAuthorize("hasPermission(#user, 'listagem_'+#this.this.name)")
   public List<?> lista() {
     return dao.findAll();
+  }
+
+  public E getObject(int id) {
+    return dao.findById(id);
+  }
+
+  public E newObject() throws Exception {
+    return (E) clazz.newInstance();
   }
 
   public String getName() {

@@ -1,4 +1,4 @@
-package org.hello.generic.controller;
+package org.store.generic.controller;
 
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.validation.BindingResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hello.generic.service.basicService;
+import org.store.generic.service.basicService;
+import org.store.custom.annotation.form_action.Item;
+import org.store.custom.annotation.form_action.Menu;
+import org.store.MenuList;
 
 public class basicController<E> {
   @Autowired
@@ -25,25 +28,37 @@ public class basicController<E> {
 
   @RequestMapping(value = "cadastra")
   @PreAuthorize("hasPermission(#user, 'cadastra_'+#this.this.name)")
-  public String cadastra(Model model) {
+  @Menu
+  public String cadastra(Model model) throws Exception {
+    model.addAttribute("command", serv.newObject());
     return "private/cadastra";
   }
 
   @RequestMapping(value = "altera/{id}")
   @PreAuthorize("hasPermission(#user, 'altera_'+#this.this.name)")
+  @Item
   public String altera(Model model, @PathVariable("id") String id) {
+    int Id = Integer.valueOf(id).intValue();
+    model.addAttribute("command", serv.getObject(Id));
     return "private/altera";
   }
 
   @RequestMapping(value = "remove/{id}")
   @PreAuthorize("hasPermission(#user, 'remove_'+#this.this.name)")
+  @Item
   public String remove(Model model, @PathVariable("id") String id) {
+    int Id = Integer.valueOf(id).intValue();
+    model.addAttribute("command", serv.getObject(Id));
     return "private/remove";
   }
 
   @RequestMapping(value = "index")
   @PreAuthorize("hasPermission(#user, 'listagem_'+#this.this.name)")
   public String index(Model model) {
+    model.addAttribute("command", getName());
+    model.addAttribute("colunas", MenuList.header(clazz));
+    model.addAttribute("menu", MenuList.menu(this.getClass()));
+    model.addAttribute("item", MenuList.item(this.getClass()));
     return "private/index";
   }
 

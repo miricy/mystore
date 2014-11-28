@@ -19,7 +19,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li th:each="item : ${menu}"><a href="#"><span th:text="${item.simpleName}"></span></a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li sec:authorize="isAuthenticated()"><a th:href="@{/home}"><span th:text="${usuario}"></span></a></li>

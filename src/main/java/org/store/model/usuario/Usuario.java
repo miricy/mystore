@@ -17,10 +17,13 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.core.annotation.Order;
 
+import org.store.custom.annotation.form.Form;
+import org.store.custom.annotation.form_control.Input;
 import org.store.generic.persistence.Model;
 import org.store.model.role.Role;
 
 @Entity
+@Form
 public class Usuario extends Model {
 
 	@Id
@@ -29,18 +32,23 @@ public class Usuario extends Model {
 	private Integer id;
 
 	@Order(value = 2)
+	@Input(label = "Login")
 	private String login;
 
 	@Order(value = 3)
+	@Input(label = "Senha", type = "password")
 	private String senha;
 
 	@Order(value = 4)
+	@Input(label = "Nome")
 	private String nome;
 
 	@Order(value = 5)
+	@Input(label = "Sobrenome")
 	private String sobrenome;
 
 	@Order(value = 6)
+	@Input(label = "E-mail")
 	private String email;
 
 	@ManyToMany

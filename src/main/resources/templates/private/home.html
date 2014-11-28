@@ -37,10 +37,10 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li th:each="item : ${menu}"><a href="#"><span th:text="${item.simpleName}"></span></a></li>
+            <li th:each="item : ${menu}"><a th:href="@{/__${item.simpleName}__/index}"><span th:text="${item.simpleName}"></span></a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li th:each="item : ${settings}"><a href="#"><span th:text="${item.simpleName}"></span></a></li>
+            <li th:each="item : ${settings}"><a th:href="@{/__${item.simpleName}__/index}"><span th:text="${item.simpleName}"></span></a></li>
           </ul>
         </div>
 
@@ -55,5 +55,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="js/docs.min.js"></script>
+    <script src="js/page_link.js"></script>
 </body>
 </html>

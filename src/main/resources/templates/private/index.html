@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title></title>
+</head>
+<body>
+  <div class="panel panel-default">
+    <div class="panel-heading"><span th:text="${command}"></span></div>
+
+    <div class="panel-body">
+      <button th:each="item : ${menu}" type="button" class="btn btn-default">${item}</button>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th th:each="item : ${colunas}"></th>
+        </tr>
+      </thead>
+
+      <tbody class="content"></tbody>
+
+      <tfoot>
+        <tr>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div th:each="item : ${item}" class="cmd"><span th:text="${item}"/></div>
+
+  <script src="js/page_load.js"></script>
+  <script>
+    $(document).ready(function(){
+      var url = '@{/__${command}__/lista.json}';
+      load_content(url);
+    });
+  </script>
+</body>
+</html>
